@@ -1,0 +1,71 @@
+# =====================
+# Global (common files)
+# =====================
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# =====================
+# Flutter specific
+# =====================
+**/build/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/.metadata
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/App.framework
+**/android/.gradle
+**/android/captures/
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+**/web/.dart_tool/
+
+# IntelliJ / VS Code
+**/.idea/
+**/.vscode/
+**/*.iml
+
+# Flutter generated plugins (optional)
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# =====================
+# Node.js specific
+# =====================
+**/node_modules/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/package-lock.json # optional, if using yarn instead
+**/.next/ # if using Next.js
+**/dist/
+**/coverage/
+
+# PM2 logs
+**/pids/
+**/logs/
+
+# =====================
+# Docker specific
+# =====================
+**/docker-compose.override.yml
+**/*.env
+**/.envrc
+**/.dockerignore
+**/.dockerenv
+**/.container*
+
+# Avoid local volume data (optional)
+**/data/
+**/tmp/
