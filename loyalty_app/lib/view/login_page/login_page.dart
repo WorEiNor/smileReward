@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loyalty_app/utils/navigation_service.dart';
-import 'package:loyalty_app/view/login_page/login_page_viewmodel.dart';
+
+import '../../viewmodels/login_viewmodel.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   @override
@@ -14,23 +15,22 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   Future<void> _login() async {
-    final loginPageNotifier = ref.read(loginPageProvider.notifier);
-    final loginPageState = ref.watch(loginPageProvider);
+    final loginPageNotifier = ref.read(loginViewModelProvider.notifier);
+    final loginPageState = ref.watch(loginViewModelProvider);
     
     if (_formKey.currentState!.validate() && !loginPageState.isLoading) {
       await loginPageNotifier.login(
-        _emailController.text,
-        _passwordController.text,
+        email: _emailController.text,
+        password: _passwordController.text,
       );
     }
-
     if (!mounted) return;
 
-    if (loginPageState.hasError) {
+    if (loginPageState.error != null) {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(loginPageState.error.toString())));
-    } else if (loginPageState is AsyncData) {
+    } else {
       // Navigate to home page
       NavigationService.go('/mainhome');
     }
@@ -38,7 +38,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final loginPageState = ref.watch(loginPageProvider);
+    final loginPageState = ref.watch(loginViewModelProvider);
     
 
     return Scaffold(

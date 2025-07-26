@@ -1,16 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/models/item_model.dart';
+
+import '../models/reward_model.dart';
 
 class RewardCard extends StatelessWidget {
   final VoidCallback onTapWishlist;
   final VoidCallback onTap;
   final bool isWishlisted;
-  final Reward item;
+  final Reward reward;
 
   const RewardCard({
     super.key,
-    required this.item,
+    required this.reward,
     required this.onTapWishlist,
     required this.onTap,
     required this.isWishlisted,
@@ -46,14 +47,14 @@ class RewardCard extends StatelessWidget {
                         top: Radius.circular(12),
                       ),
                       child: CachedNetworkImage(
-                        imageUrl: item.imageUrl.trim(),
+                        imageUrl: reward.imageUrl.trim(),
                         placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                         errorWidget: (context, url, error) => Center(child: Icon(Icons.image_not_supported)),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  
+
                   // Wishlist button
                   Positioned(
                     top: 8,
@@ -85,7 +86,7 @@ class RewardCard extends StatelessWidget {
                 ],
               ),
             ),
-      
+
             // Item details
             Expanded(
               flex: 2,
@@ -96,7 +97,7 @@ class RewardCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      item.name,
+                      reward.name,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -104,7 +105,7 @@ class RewardCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    
+
                     Row(
                       children: [
                         Icon(
@@ -114,7 +115,7 @@ class RewardCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          '${item.points} pts',
+                          '${reward.points} pts',
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,

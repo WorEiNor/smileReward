@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loyalty_app/services/api_service.dart';
-import 'package:loyalty_app/states/item_state.dart';
+import 'package:loyalty_app/states/reward_list_state.dart';
 
-class ItemsViewModel extends StateNotifier<ItemsState> {
-  ItemsViewModel() : super(const ItemsState()) {
+class RewardListViewModel extends StateNotifier<RewardListState> {
+  RewardListViewModel() : super(const RewardListState()) {
     loadItems();
   }
 
@@ -42,8 +42,9 @@ class ItemsViewModel extends StateNotifier<ItemsState> {
       );
     }
   }
+
 }
 
-final itemsViewModelProvider = StateNotifierProvider<ItemsViewModel, ItemsState>(
-  (ref) => ItemsViewModel(),
+final rewardListViewModelProvider = StateNotifierProvider<RewardListViewModel, RewardListState>(
+  (ref) => RewardListViewModel(),
 );

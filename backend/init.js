@@ -1,4 +1,4 @@
-db = db.getSiblingDB('mydb');
+db = db.getSiblingDB('smiledb');
 
 db.rewards.insertMany([
   {

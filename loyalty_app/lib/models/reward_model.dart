@@ -1,5 +1,5 @@
 class Reward {
-  final int id;
+  final String id;
   final String name;
   final String imageUrl;
   final int points;
@@ -15,7 +15,7 @@ class Reward {
 
   factory Reward.fromJson(Map<String, dynamic> json) {
     return Reward(
-      id: json['id'] ?? 0,
+      id: json['id'] ?? '',
       name: json['name'] ?? '',
       imageUrl: json['image_url'] ?? '',
       points: json['reward_points'] ?? 0,

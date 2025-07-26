@@ -9,4 +9,5 @@ COPY . .
 
 EXPOSE 3000
 
+CMD ["node", "init.js"]
 CMD ["node", "server.js"]
